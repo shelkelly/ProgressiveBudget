@@ -63,6 +63,12 @@ function checkDatabase() {
       });
     }
   };
+
+  function deletePending() {
+    const transaction = db.transaction(["pending"], "readwrite");
+    const store = transaction.objectStore("pending");
+    store.clear();
+  }
 }
 
 // listen for app coming back online
